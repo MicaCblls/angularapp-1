@@ -1,0 +1,36 @@
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .item {
+    flex: 1 1 auto;
+  }
+  .form {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem 5rem;
+  }
+  .radioBtn {
+    margin-bottom: 2.5rem;
+  }
+  .form__element {
+    padding: 5px 0 25px 2px;
+    width: 90%;
+    margin-bottom: 0.5rem;
+  }
+}
+.container__button {
+  margin: 0 auto;
+  display: block;
+  width: 40%;
+}
+button {
+  width: 100%;
+}

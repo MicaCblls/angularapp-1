@@ -1,0 +1,26 @@
+/* Establecer el tamaño completo del componente */
+.message {
+  display: flex; /* Hacer que el componente sea un contenedor flexible */
+  flex-direction: column;
+  align-items: center; /* Centrar verticalmente el contenido */
+  justify-content: center; /* Centrar horizontalmente el contenido */
+  height: 90vh; /* Tamaño del componente al 100% del alto de la ventana */
+  background-color: #f0f0f0; /* Opcional: cambia el color de fondo a tu gusto */
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff; /* Cambia el color de fondo del botón a tu gusto */
+  color: #fff; /* Cambia el color del texto del botón a tu gusto */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease; /* Agrega una transición suave al color de fondo */
+}
+
+/* Cambia el color de fondo del botón cuando se pasa el mouse por encima */
+button:hover {
+  background-color: #0056b3; /* Cambia el color de fondo del botón en el hover a tu gusto */
+}

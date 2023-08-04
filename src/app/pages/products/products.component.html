@@ -1,0 +1,14 @@
+<!-- Para mostrar cada uno de los productos se utiliza una directiva: las directivas son como atributos que pueden cambiar la apariencia o el comportamiento del DOM Element -->
+<!-- Tipos de directivas:  
+* Estructurales (se les llama asi porque pueden cambiar el DOM)
+* De atributos 
+* Directivas custom
+* Componentes - Directivas con template
+-->
+<section class="products">
+  <app-product
+    (addToCartClick)="addToCart($event)"
+    [product]="product"
+    *ngFor="let product of products"
+  ></app-product>
+</section>

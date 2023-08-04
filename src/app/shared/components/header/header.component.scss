@@ -1,0 +1,36 @@
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  /* styles.scss o componente-navbar.scss */
+  .navbar-button {
+    display: flex;
+    background-color: inherit; /* Color de fondo del botón en la navbar */
+    color: #fff; /* Color del texto del botón en la navbar */
+    padding: 8px 16px; /* Espaciado interno del botón para el tamaño adecuado */
+    border: none; /* Quita los bordes del botón */
+    border-radius: 4px; /* Añade esquinas redondeadas al botón */
+    cursor: pointer; /* Cambia el cursor al pasar por encima del botón */
+    font-size: 14px; /* Tamaño de fuente del texto del botón */
+    transition: all; /* Transición suave en el color de fondo */
+
+    /* Estilo para el botón al pasar el mouse por encima */
+    &:hover {
+      background-color: inherit;
+      /* Cambia el color de fondo al pasar el mouse por encima */
+      text-decoration: underline;
+    }
+
+    /* Estilo para el botón al hacer clic */
+    &:active {
+      text-decoration: underline;
+      background-color: inherit;
+      /* Cambia el color de fondo cuando el botón está presionado */
+    }
+  }
+}
+a {
+  text-decoration: none;
+  color: #fff;
+}
