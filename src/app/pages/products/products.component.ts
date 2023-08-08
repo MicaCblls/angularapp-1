@@ -19,8 +19,6 @@ export class ProductsComponent implements OnInit {
     private shoppingCartSvc: ShoppingCartService
   ) {}
   async ngOnInit(): Promise<void> {
-    console.log(commonEnvironment);
-
     (await this.productsSvc.getProducts())
       .pipe(tap((res: Product[]) => (this.products = res)))
       .subscribe();
