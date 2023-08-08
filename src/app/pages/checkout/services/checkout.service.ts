@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Store } from '../interface/store.interface';
 import { Order, DetailsOrder, Details } from '../interface/order.interface';
-import { supabase } from 'src/supabase.config';
+import supabase from 'src/supabase.config';
 
 @Injectable({
   providedIn: 'root',

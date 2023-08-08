@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Product } from '../interface/product.interface';
-import { supabase } from 'src/supabase.config';
+import supabase from 'src/supabase.config';
 
 @Injectable({
   providedIn: 'root',

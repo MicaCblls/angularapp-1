@@ -5,6 +5,7 @@ import { tap } from 'rxjs/operators';
 import { Product } from './interface/product.interface';
 import { ShoppingCartService } from 'src/app/shared/services/shopping-cart.service';
 import * as data from '../../../../server/db.json';
+import { commonEnvironment } from 'src/environments/environment.common';
 
 @Component({
   selector: 'app-products',
@@ -18,6 +19,8 @@ export class ProductsComponent implements OnInit {
     private shoppingCartSvc: ShoppingCartService
   ) {}
   async ngOnInit(): Promise<void> {
+    console.log(commonEnvironment);
+
     (await this.productsSvc.getProducts())
       .pipe(tap((res: Product[]) => (this.products = res)))
       .subscribe();
