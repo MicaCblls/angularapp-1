@@ -10,6 +10,6 @@ export class AppComponent implements OnInit {
   constructor(private appSvc: MyDataLoaderService) {}
   title = 'angularapp-1';
   ngOnInit(): void {
-    this.appSvc.dataLoaded();
+    /* this.appSvc.dataLoaded(); */
   }
 }
