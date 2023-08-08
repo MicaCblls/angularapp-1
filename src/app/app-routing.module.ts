@@ -4,7 +4,6 @@ import { PageNotFoundComponent } from './pages/notfound/notfound.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/products', pathMatch: 'full' },
-
   {
     path: 'products',
     loadChildren: () =>

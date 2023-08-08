@@ -1,5 +1,5 @@
 export interface Order {
-  id: number;
+  id: string;
   name: string;
   date: string;
   shippingAddress: string;
@@ -7,12 +7,12 @@ export interface Order {
   isDelivery: boolean;
 }
 export interface Details {
-  productId: number;
+  productId: string;
   quantity: number;
   productName: string;
 }
 
 export interface DetailsOrder {
   details: Details[];
-  orderId: number;
+  orderId: string;
 }

@@ -1,22 +1,38 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Product } from '../interface/product.interface';
+import { supabase } from 'src/supabase.config';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
-  private apiUrl = 'http://localhost:3000';
   constructor(private http: HttpClient) {}
 
   /*Observable: es un flujo de datos en el tiempo. Los observables representan una coleccion de futuros valores o data */
-  getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${this.apiUrl}/products`);
+  async getProducts(): Promise<Observable<Product[]>> {
+    let { data: products, error } = await supabase.from('products').select('*');
+
+    return of(products as Product[]);
   }
-  updateStock(productId: number, stock: number): Observable<any> {
+  async updateStock(
+    productId: string,
+    stock: number
+  ): Promise<Observable<any>> {
+    /* 
+    return this.http.patch<any>(`${this.apiUrl}/products/${productId}`, body); */
     const body = { stock: stock };
-    return this.http.patch<any>(`${this.apiUrl}/products/${productId}`, body);
+    const { data, error } = await supabase
+      .from('products') // Nombre de tu tabla
+      .update(body) // La columna y el nuevo valor
+      .eq('id', productId); // Asume que 'id' es la clave para identificar el producto
+
+    if (error) {
+      console.error('Error updating product:', error);
+    }
+
+    return of(data);
   }
 }
 

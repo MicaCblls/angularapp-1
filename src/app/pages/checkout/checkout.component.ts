@@ -8,6 +8,7 @@ import { Product } from '../products/interface/product.interface';
 import { ShoppingCartService } from 'src/app/shared/services/shopping-cart.service';
 import { Router } from '@angular/router';
 import { ProductsService } from '../products/services/products.service';
+import { pipe } from 'rxjs';
 
 @Component({
   selector: 'app-checkout',
@@ -47,22 +48,21 @@ export class CheckoutComponent implements OnInit {
     this.isDelivery = value;
   }
 
-  private getStores(): void {
-    this.storeSvc
-      .getStores()
+  private async getStores(): Promise<void> {
+    (await this.storeSvc.getStores())
       .pipe(tap((res: Store[]) => (this.stores = res)))
       .subscribe();
   }
-  onSubmit({ value: formData }: NgForm): void {
-    console.log('submit', formData);
+  async onSubmit({ value: formData }: NgForm): Promise<void> {
     const data = {
       ...formData,
       date: this.getCurrentDate(),
       isDelivery: this.isDelivery,
     };
 
-    this.storeSvc
-      .postOrder(data)
+    await (
+      await this.storeSvc.postOrder(data)
+    )
       .pipe(
         tap((res) => console.log(res)),
         switchMap(({ id: orderId }) => {
@@ -84,7 +84,7 @@ export class CheckoutComponent implements OnInit {
 
   private formatDetails(): Details[] {
     const details: Details[] = [];
-    this.cart.forEach((product: Product) => {
+    this.cart.forEach(async (product: Product) => {
       const {
         id: productId,
         name: productName,
@@ -92,8 +92,7 @@ export class CheckoutComponent implements OnInit {
         stock,
       } = product;
       const updateStock = stock - quantity;
-      this.productsSvc
-        .updateStock(productId, updateStock)
+      await (await this.productsSvc.updateStock(productId, updateStock))
         .pipe(tap(() => details.push({ productId, productName, quantity })))
         .subscribe();
     });

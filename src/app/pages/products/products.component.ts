@@ -4,6 +4,7 @@ import { ProductsService } from './services/products.service';
 import { tap } from 'rxjs/operators';
 import { Product } from './interface/product.interface';
 import { ShoppingCartService } from 'src/app/shared/services/shopping-cart.service';
+import * as data from '../../../../server/db.json';
 
 @Component({
   selector: 'app-products',
@@ -16,14 +17,12 @@ export class ProductsComponent implements OnInit {
     private productsSvc: ProductsService,
     private shoppingCartSvc: ShoppingCartService
   ) {}
-  ngOnInit(): void {
-    this.productsSvc
-      .getProducts()
+  async ngOnInit(): Promise<void> {
+    (await this.productsSvc.getProducts())
       .pipe(tap((res: Product[]) => (this.products = res)))
       .subscribe();
   }
   addToCart(product: Product): void {
-    console.log('add');
     this.shoppingCartSvc.updateCart(product);
   }
 }

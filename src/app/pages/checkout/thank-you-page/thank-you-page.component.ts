@@ -15,7 +15,6 @@ export class ThankYouPageComponent implements OnInit {
   constructor(private router: Router) {}
   ngOnInit(): void {
     this.currentUrl = this.router.url;
-    console.log(this.currentUrl);
   }
 
   redirectToProducts() {
